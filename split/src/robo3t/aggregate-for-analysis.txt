@@ -1,0 +1,134 @@
+
+
+db.getCollection('Products').aggregate([
+  { $match: { name : /Philip/ } }
+])
+
+option 3:
+db.getCollection('Tags').aggregate([
+{ $match : { _p_product: 'Products$349cdb9434726c34611fb3' } }
+,{ $unwind : "$codes" }
+,{ $lookup: { from: 'TagCodes', localField: 'codes.objectId' , foreignField: '_id', as: 'code_from_tagCodes' }}
+,{ $project: { "_id": 1, "_p_product": 1, "codes.objectId": 1, "code_from_tagCodes.code": 1 } }
+,{ $unwind: "$code_from_tagCodes" }
+,{ $project: {"code_from_tagCodes.code": 1 } }
+// , { $group: { _id: null, count: { $sum: 1 } } }
+])
+
+
+
+
+option 1:
+
+db.getCollection('Companies').find({name: /Bedford/ })
+db.getCollection('Products').find({_p_company: 'Companies$5063114bd386d8fadbd6b004'}
+, {name: 1, _id: 1})
+// .count()
+db.getCollection('Tags').find({_p_product: 'Products$349cdb9434726c346518b1'}, {codes: 1})
+/* 1 */
+{
+    "_id" : "308fd3d4732620276218b3",
+    "codes" : [
+        {
+            "className" : "TagCodes",
+            "objectId" : "308fd3b32e757d34621ebc5aa0b24b88b64e88b1d4",
+            "__type" : "Pointer"
+        },
+        {
+            "className" : "TagCodes",
+            "objectId" : "308fd3b32e757d34621ebc5aa0b24b94a34a8ab1d4",
+            "__type" : "Pointer"
+        }
+    ]
+}
+..
+..
+..
+/* 33 */
+{
+    "_id" : "308fd3d473262d246219b7",
+    "codes" : [
+        {
+            "className" : "TagCodes",
+            "objectId" : "308fd3b32e757d34621eb159a0b34f88b64e88b1d4",
+            "__type" : "Pointer"
+        },
+        {
+            "className" : "TagCodes",
+            "objectId" : "308fd3b32e757d34621eb159a0b34f94a34a8ab1d4",
+            "__type" : "Pointer"
+        }
+    ]
+}
+
+db.getCollection('TagCodes').find({_id: '308fd3b32e757d34621ebc5aa0b24b88b64e88b1d4'}, {code: 1})
+
+/* 1 */
+{
+    "_id" : "308fd3b32e757d34621ebc5aa0b24b88b64e88b1d4",
+    "code" : "b70430742e67732f634f6e6d44788efd"
+}
+
+
+
+
+db.getCollection('Products').find({name: /Molson Coors/ })
+
+db.getCollection('Products').aggregate([
+{ $match : { name: /Molson Coors/ } }
+, { $project: { "name" : 1 } }
+])
+/* 1 */
+{
+    "_id" : "349cdb9434726c34611fbd",
+    "name" : "Chandrasekhar demo Type#7 (Molson Coors)"
+}
+
+/* 2 */
+{
+    "_id" : "349cdb9434726c34611fbc",
+    "name" : "Chandrasekhar demo Type#6 (Molson Coors, Coors lite)"
+}
+
+/* 3 */
+{
+    "_id" : "349cdb9434726c34611fb3",
+    "name" : "Chandrasekhar demo Type#5 (Molson Coors, Coors lite)"
+}
+...
+...
+...
+/* 16 */
+{
+    "_id" : "o7AkXbboa2",
+    "name" : "Molson Coors 5"
+}
+
+/* 17 */
+{
+    "_id" : "ZoonTH9U7V",
+    "name" : "Molson Coors 6"
+}
+
+db.getCollection('Tags').aggregate([
+{ $match : { _p_product: 'Products$349cdb9434726c34611fb3' } }
+,{ $unwind : "$codes" }
+,{ $lookup: { from: 'TagCodes', localField: 'codes.objectId' , foreignField: '_id', as: 'nested_code' }}
+,{ $project: { "nested_code.code": 1 } }
+,{ $unwind : "$nested_code" }
+])
+
+
+db.Tags.aggregate([
+   {
+      $project: {
+         items: {
+            $filter: {
+               input: "$items",
+               as: "item",
+               cond: { $gte: [ "$$item._p_product", 'Product$349cdb9434726c34631cb7' ] }
+            }
+         }
+      }
+   }
+])

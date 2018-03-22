@@ -1,0 +1,31 @@
+# Thinfilm Operation Script - Split / Bulb Move
+
+## Requirements
+  * NodeJS version 6+
+  * NPM version 3+
+  * MongoDB version 3.4+
+  * linux/mac console terminal
+    
+## Installation
+- `cd dist` after uncompress package
+- run `npm install` to add NPM support libraries
+- vi `.env` file with correct environment variables
+
+## Environment variables
+Environment variables are listed in `.env`
+
+## Scripts
+Scripts can be run with `node`. Scripts should contain usage.
+```
+<ENV> node src/split.js <...arguments>
+```
+
+Where `<ENV>` is environment variables string, e.g.
+```
+DATABASE_URI='mongodb://127.0.0.1:port/database node split.js --csv_file_path=file.csv ...
+```
+
+## Manual guide
+1. Run `node split.js` with arguments, 
+2. See console output for \*\_split_*.csv output files file path
+3. See split-bulb-move-script.docx for arguments definition

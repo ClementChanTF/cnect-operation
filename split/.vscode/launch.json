@@ -1,0 +1,228 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "overlap error",
+            "program": "${workspaceFolder}/src/split.js",
+            "args": [
+               "--csv_filepath=./csv/P011707033.csv" 
+               "--start_tag=B70430742E67732F4F43773530665CE1,B70430742E67732F4B706F6F6962117B" 
+               "--end_tag=B70430742E67732F4C7970677777A3F9,B70430742E67732F655851324747C6A8" 
+                ]
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "3 chunks with Parent Name",
+            "program": "${workspaceFolder}/src/split.js",
+            "args": [
+               "--product_name=\"Bedford Industries Inc\""
+               "--csv_filepath=./csv/P011707033.csv" 
+               "--start_tag=B70430742E67732F4F43773530665CE1,B70430742E67732F6C554F39345711C7,B70430742E67732F62744B775368C618" 
+               "--end_tag=B70430742E67732F4846567632323B8F,B70430742E67732F4B327239654527D8,B70430742E67732F326B52737869D774" 
+                ]
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "3 chunks in 1",
+            "program": "${workspaceFolder}/src/split.js",
+            "args": [
+               "--csv_filepath=./csv/P011707033.csv" 
+               "--start_tag=B70430742E67732F4F43773530665CE1,B70430742E67732F6C554F39345711C7,B70430742E67732F62744B775368C618" 
+               "--end_tag=B70430742E67732F4846567632323B8F,B70430742E67732F4B327239654527D8,B70430742E67732F326B52737869D774" 
+                ]
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "3 chunks",
+            "program": "${workspaceFolder}/src/split.js",
+            "args": [
+               "--csv_filepath=./csv/P011707033.csv" 
+               "--start_tag=B70430742E67732F4F43773530665CE1,B70430742E67732F6C554F39345711C7,B70430742E67732F62744B775368C618" 
+               "--end_tag=B70430742E67732F4846567632323B8F,B70430742E67732F4B327239654527D8,B70430742E67732F326B52737869D774" 
+                ]
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "1k chunks",
+            "program": "${workspaceFolder}/src/split.js",
+            "args": [
+               "--csv_filepath=./csv/P011707033.csv" 
+               "--start_tag=B70430742E67732F4F43773530665CE1" 
+               "--end_tag=B70430742E67732F62744B775368C618" 
+                ]
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "trailing commas in _tag list",
+            "program": "${workspaceFolder}/src/split.js",
+            "args": [
+               "--csv_filepath=./csv/P011707033.csv" 
+               "--start_tag=B70430742E67732F4F43773530665CE1," 
+               "--end_tag=B70430742E67732F62744B775368C618," 
+                ]
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "1k chunks reverse",
+            "program": "${workspaceFolder}/src/split.js",
+            "args": [
+               "--csv_filepath=./csv/P011707033.csv" 
+               "--start_tag=B70430742E67732F62744B775368C618" 
+               "--end_tag=B70430742E67732F4F43773530665CE1" 
+                ]
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Bulb Move",
+            "program": "${workspaceFolder}/src/split.js",
+            "args": [
+               "--many_to_many"
+               "--csv_filepath=./csv/P011707033.csv" 
+               "--start_tag=B70430742E67732F4F43773530665CE1,B70430742E67732F6C554F39345711C7,B70430742E67732F62744B775368C618" 
+               "--end_tag=B70430742E67732F4846567632323B8F,B70430742E67732F4B327239654527D8,B70430742E67732F326B52737869D774" 
+                ]
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Bulb Move inverse 2nd pair",
+            "program": "${workspaceFolder}/src/split.js",
+            "args": [
+               "--many_to_many"
+               "--csv_filepath=./csv/P011707033.csv" 
+               "--start_tag=B70430742E67732F4F43773530665CE1,B70430742E67732F4B327239654527D8,B70430742E67732F62744B775368C618" 
+               "--end_tag=B70430742E67732F4846567632323B8F,B70430742E67732F6C554F39345711C7,B70430742E67732F326B52737869D774" 
+                ]
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Tildy TBD",
+            "program": "${workspaceFolder}/src/split.js",
+            "args": [
+               "--many_to_many"
+               "--csv_filepath=./csv/P011707033.csv" 
+               "--start_tag=B70430742E67732F4F43773530665CE1,B70430742E67732F6C554F39345711C7,B70430742E67732F62744B775368C618" 
+               "--end_tag=B70430742E67732F4846567632323B8F,B70430742E67732F4B327239654527D8,B70430742E67732F326B52737869D774" 
+                ]
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Mismatch Start End",
+            "program": "${workspaceFolder}/src/split.js",
+            "args": [
+               "--many_to_many"
+               "--csv_filepath=./csv/P011707033.csv" 
+               "--start_tag=B70430742E67732F4F43773530665CE1,B70430742E67732F62744B775368C618" 
+               "--end_tag=B70430742E67732F4846567632323B8F,B70430742E67732F4B327239654527D8,B70430742E67732F326B52737869D774" 
+                ]
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "USAGE",
+            "program": "${workspaceFolder}/src/split.js",
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "mclient",
+            "program": "${workspaceFolder}/src/mclient/data-source.js",
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "get samsung tags",
+            "program": "${workspaceFolder}/src/mclient/get-samsung-tags.js",
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "split samsung 3 chunks",
+            "program": "${workspaceFolder}/src/split.js",
+            "args": [
+               "--csv_filepath=./csv/samsung.csv" 
+               "--start_tag=b70439742e67732f55775542624af0f6,b70439742e67732f564370673267f7d8,b70439742e67732f7a4d6b6659385013" 
+               "--end_tag=b70439742e67732f77335836714f1190,b70439742e67732f4a42615a7547037f,b70439742e67732f3368436b7a7606a1" 
+                ]
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "samsung produc tName 3 chunks",
+            "program": "${workspaceFolder}/src/split.js",
+            "args": [
+               "--product_name=\"2016-04 Engineering and marketing samples split from Altria sub-batch 0 (Samsung SEA)\""
+               "--csv_filepath=./csv/samsung.csv" 
+               "--start_tag=b70439742e67732f55775542624af0f6,b70439742e67732f564370673267f7d8,b70439742e67732f7a4d6b6659385013" 
+               "--end_tag=b70439742e67732f77335836714f1190,b70439742e67732f4a42615a7547037f,b70439742e67732f3368436b7a7606a1" 
+                ]
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "many-to-many samsung produc tName 3 chunks",
+            "program": "${workspaceFolder}/src/split.js",
+            "args": [
+               "--many_to_many"
+               "--product_name=\"2016-04 Engineering and marketing samples split from Altria sub-batch 0 (Samsung SEA)\""
+               "--csv_filepath=./csv/samsung.csv" 
+               "--start_tag=b70439742e67732f55775542624af0f6,b70439742e67732f564370673267f7d8,b70439742e67732f7a4d6b6659385013" 
+               "--end_tag=b70439742e67732f77335836714f1190,b70439742e67732f4a42615a7547037f,b70439742e67732f3368436b7a7606a1" 
+                ]
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "many-to-many samsung produc id 3 chunks",
+            "program": "${workspaceFolder}/src/split.js",
+            "args": [
+               "--many_to_many"
+               "--product_id=349cdb9434726c34671e"
+               "--csv_filepath=./csv/samsung.csv" 
+               "--start_tag=b70439742e67732f55775542624af0f6,b70439742e67732f564370673267f7d8,b70439742e67732f7a4d6b6659385013" 
+               "--end_tag=b70439742e67732f77335836714f1190,b70439742e67732f4a42615a7547037f,b70439742e67732f3368436b7a7606a1" 
+                ]
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "invalid prod_id",
+            "program": "${workspaceFolder}/src/split.js",
+            "args": [
+               "--many_to_many"
+               "--product_id=349cdb9434726c34671"
+               "--csv_filepath=./csv/samsung.csv" 
+               "--start_tag=b70439742e67732f55775542624af0f6,b70439742e67732f564370673267f7d8,b70439742e67732f7a4d6b6659385013" 
+               "--end_tag=b70439742e67732f77335836714f1190,b70439742e67732f4a42615a7547037f,b70439742e67732f3368436b7a7606a1" 
+                ]
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "invalid prod_name",
+            "program": "${workspaceFolder}/src/split.js",
+            "args": [
+               "--many_to_many"
+               "--product_name=\"no such product\""
+               "--csv_filepath=./csv/samsung.csv" 
+               "--start_tag=b70439742e67732f55775542624af0f6,b70439742e67732f564370673267f7d8,b70439742e67732f7a4d6b6659385013" 
+               "--end_tag=b70439742e67732f77335836714f1190,b70439742e67732f4a42615a7547037f,b70439742e67732f3368436b7a7606a1" 
+                ]
+        },
+    ]
+}
+

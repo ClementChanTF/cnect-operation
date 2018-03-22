@@ -1,0 +1,19 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch Program",
+            "program": "${workspaceFolder}/src/split.js",
+            "args": [
+                "--csvfilepath=./csv/P011707033.csv",
+                "--start_tag=B70430742E67732F4F43773530665CE1",
+                "--end_tag=B70430742E67732F4C7970677777A3F9",
+            ]
+        }
+    ]
+}
